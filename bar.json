@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bar chart of top 10 countries with the highest Annual CO₂ emissions (per capita) in 2018",
+    "data": {
+      "url": "co2-emissions-vs-gdp_filter_2.csv"
+    },
+    "transform": [
+      {
+        "sort": [
+          {
+            "field": "Annual CO₂ emissions (per capita)",
+            "order": "descending"
+          }
+        ],
+        "window": [
+          {
+            "op": "row_number",
+            "as": "rank"
+          }
+        ],
+        "frame": [0, 9]
+      },
+      {
+        "filter": "datum.rank <= 10"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "Entity",
+        "type": "nominal",
+        "title": "Country",
+        "sort": "-x"
+      },
+      "x": {
+        "field": "Annual CO₂ emissions (per capita)",
+        "type": "quantitative",
+        "title": "Annual CO₂ emissions (per capita)"
+      },
+      "tooltip": [
+        {
+          "field": "Entity",
+          "type": "nominal",
+          "title": "Country"
+        },
+        {
+          "field": "Annual CO₂ emissions (per capita)",
+          "type": "quantitative"
+        }
+      ]
+    }
+  }
+  

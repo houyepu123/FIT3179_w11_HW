@@ -1,0 +1,25 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "data": {
+      "url": "co2-emissions-vs-gdp_filter_2.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "bin": true,
+        "field": "GDP per capita",
+        "type": "quantitative",
+        "title": "GDP Range"
+      },
+      "y": {
+        "aggregate": "count",
+        "type": "quantitative",
+        "title": "Number of Countries"
+      },
+      "tooltip": [
+        {"bin": true, "field": "GDP per capita", "type": "quantitative", "title": "GDP Range"},
+        {"aggregate": "count", "type": "quantitative", "title": "Number of Countries"}
+      ]
+    }
+  }
+  
